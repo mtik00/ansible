@@ -21,3 +21,5 @@
       tags: [ gnupg ]
     - role: pass
       tags: [ pass ]
+    - role: docker
+      tags: [ docker ]
