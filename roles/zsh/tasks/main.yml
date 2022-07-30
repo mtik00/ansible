@@ -1,0 +1,31 @@
+---
+
+- name: fonts
+  import_tasks: fonts.yml
+
+- name: Install zsh package(s)
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - zsh
+    state: present
+
+- name: Install oh-my-zsh
+  shell: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash
+  args:
+    creates: "{{ ansible_user_dir }}/.oh-my-zsh/lib/"
+    warn: false
+  become: no
+
+- name: make zsh default
+  become: yes
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+
+- name: zshrc
+  import_tasks: zshrc.yml
+
+- name: powerlevel9k
+  import_tasks: powerlevel9k.yml
