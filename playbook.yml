@@ -13,3 +13,5 @@
       tags: [ zsh ]
     - role: home-bin
       tags: [ home-bin ]
+    - role: python
+      tags: [ python ]

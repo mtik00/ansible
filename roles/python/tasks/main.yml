@@ -1,0 +1,7 @@
+---
+
+- name: pip
+  import_tasks: pip.yml
+
+- name: pyenv
+  import_tasks: pyenv.yml
