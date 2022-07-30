@@ -17,3 +17,5 @@
       tags: [ python ]
     - role: gnupg
       tags: [ gnupg ]
+    - role: pass
+      tags: [ pass ]
