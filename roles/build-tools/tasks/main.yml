@@ -1,0 +1,22 @@
+---
+
+- name: Install build utilities
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - build-essential
+      - g++
+      - gcc
+      - jq
+      - libbz2-dev
+      - libncurses5-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - make
+      - vim
+      - xclip
+      - xz-utils
+      - zlib1g-dev
+    state: present
