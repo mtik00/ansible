@@ -1,0 +1,6 @@
+---
+- name: Run all of the roles
+  hosts: localhost
+  connection: local
+  roles:
+    - git
