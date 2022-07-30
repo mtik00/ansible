@@ -15,6 +15,8 @@
       tags: [ zsh ]
     - role: home-bin
       tags: [ home-bin ]
+    - role: home-folders
+      tags: [ home-folders ]
     - role: python
       tags: [ python ]
     - role: gnupg
