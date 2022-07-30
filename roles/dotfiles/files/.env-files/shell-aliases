@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+alias cpufreq='watch -n.1 "sensors|grep \"^\(Package id\|Core\) [[:digit:]]\" && cat /proc/cpuinfo | grep \"^[c]pu MHz\"  && sensors|grep fan"'
+alias df='df -lh -x squashfs'
+alias djkill='pkill -f "manage.py runserver"'
+alias keygen='ssh-keygen -t ecdsa -b 521'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alFh --group-directories-first'
+alias lt='ls -lth'
+alias pyc='find . -name "*.py[co]" -o -name __pycache__ -exec echo {} \;'
+alias rmpyc='find . -name "*.py[co]" -o -name __pycache__ -exec rm -rf {} +'
+alias tpr='tput reset'
+alias e='gio open'
+alias functions='declare -F'
+alias osinfo='neofetch  # ascii art os,kernel,bios,cpu,gpu info'
+alias dns='dig +noall +answer +search'
+alias randpassword='python3 ~/bin/randpassword.py'
+alias clean-bash='env -i bash --noprofile --rcfile ~/.bashrc-clean'
+alias randstring='cat /dev/urandom | tr -dc "[:alpha:]" | fold -w ${1:-32} | head -n 1'
+alias oplogin='bash ~/bin/_oplogin && source ~/.op-session'
+
+# Docker stuff #########################################################################################################
+alias d='docker'
+complete -F _docker d
+alias dbx='docker buildx build --output type=docker'
+alias drb='docker run --rm -it --entrypoint bash'
+alias drs='docker run --rm -it --entrypoint sh'
+alias docker-prune-old-images=_docker_prune_old_images
+########################################################################################################################
+
+alias direnv-init='cp -f ${HOME}/.dotfiles/.envrc-template .envrc && direnv allow'
+
+# 'cuz I can't remember anything
+alias seecert=_seecert
+alias tlscert=_seecert
+alias describecert=_seecert
+
+# backups
+alias bak=_bak
+alias baks=_baks
