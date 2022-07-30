@@ -1,0 +1,7 @@
+---
+
+- name: package
+  import_tasks: package.yml
+
+- name: aliases
+  import_tasks: aliases.yml
