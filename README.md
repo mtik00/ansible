@@ -31,3 +31,6 @@ ansible_become_password: XXXX
 ```
 ansible-playbook playbook.yml
 ```
+
+# TODO:
+  - gnupg
