@@ -15,3 +15,5 @@
       tags: [ home-bin ]
     - role: python
       tags: [ python ]
+    - role: gnupg
+      tags: [ gnupg ]

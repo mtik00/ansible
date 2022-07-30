@@ -1,0 +1,29 @@
+---
+- name: Install gnupg package
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - gpg
+    state: present
+
+- name: Ensure gnupg director exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.gnupg"
+    state: directory
+    mode: '0700'
+
+- name: Configure gpg
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg.conf"
+    mode: "0600"
+    content: |
+      use-agent
+
+- name: Configure gpg agent
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
+    mode: "0600"
+    content: |
+      default-cache-ttl {{ default_cache_ttl }}
+      max-cache-ttl {{ max_cache_ttl }}
