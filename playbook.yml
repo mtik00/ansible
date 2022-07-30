@@ -5,6 +5,8 @@
   vars_files:
     - .secrets/vars.yml
   roles:
+    - role: build-tools
+      tags: [ build-tools ]
     - role: git
       tags: [ git ]
     - role: dotfiles
