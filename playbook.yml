@@ -2,5 +2,8 @@
 - name: Run all of the roles
   hosts: localhost
   connection: local
+  vars_files:
+    - .secrets/sudo-password.yml
   roles:
-    - git
+    # - git
+    - zsh
