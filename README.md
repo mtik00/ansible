@@ -33,6 +33,3 @@ git_name: Jane Doe
 ```
 ansible-playbook playbook.yml
 ```
-
-# TODO:
-  - gnupg
