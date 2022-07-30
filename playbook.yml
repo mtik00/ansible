@@ -5,9 +5,11 @@
   vars_files:
     - .secrets/sudo-password.yml
   roles:
-    # - role: git
-    #   tags: [ git ]
+    - role: git
+      tags: [ git ]
     - role: dotfiles
       tags: [ dotfiles ]
-    # - role: zsh
-    #   tags: [ zsh ]
+    - role: zsh
+      tags: [ zsh ]
+    - role: home-bin
+      tags: [ home-bin ]
