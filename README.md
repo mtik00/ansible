@@ -18,12 +18,14 @@ Find the vault password and put it in `./.secrets/ansible-vault`
 
 Create the ansible sudo password file:
 ```
-ansible-vault create .secrets/sudo-password.yml
+ansible-vault create .secrets/vars.yml
 ```
 
 with content like this:
 ```
 ansible_become_password: XXXX
+git_email: me@example.com
+git_name: Jane Doe
 ```
 
 # Running

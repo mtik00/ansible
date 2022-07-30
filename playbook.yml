@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   vars_files:
-    - .secrets/sudo-password.yml
+    - .secrets/vars.yml
   roles:
     - role: git
       tags: [ git ]
