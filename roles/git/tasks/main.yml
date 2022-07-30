@@ -3,5 +3,8 @@
 - name: package
   import_tasks: package.yml
 
+- name: configure
+  import_tasks: configure.yml
+
 - name: aliases
   import_tasks: aliases.yml
