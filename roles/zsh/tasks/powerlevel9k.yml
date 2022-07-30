@@ -1,0 +1,62 @@
+---
+
+- name: powerlevel9k theme
+  ansible.builtin.git:
+    repo: https://github.com/bhilburn/powerlevel9k.git
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/powerlevel9k"
+
+- name: Configure powerlevel9k theme
+  ansible.builtin.blockinfile:
+    marker: "# {mark} ANSIBLE MANAGED BLOCK -- powerlevel9k"
+    path: "{{ ansible_user_dir }}/.zshrc"
+    block: |
+      # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+      # ZSH_THEME="agnoster"
+      current_desk_env(){
+          [[ -n "${DESK_NAME}" ]] && echo -n "📝 ${DESK_NAME}"
+      }
+
+      zsh_python_version(){
+
+          local python_version=$(python -V 2>&1 | grep -Po "(\d+\.)+\d+")
+
+          [[ -z "${python_version}" ]] && return
+
+          if [[ -n "${VIRTUAL_ENV}" ]]; then
+              echo -n "🐍 $python_version|${VIRTUAL_ENV##*/}"
+          else
+              echo -n "🐍 $python_version"
+          fi
+      }
+
+      zsh_k8s_context()
+      {
+          if [[ "${SHOW_K8S_CONTEXT}" -eq "1" ]]; then
+              CONTEXT=$(cat ~/.kube/config | grep "current-context:" | sed "s/current-context: //")
+
+              if [ "$CONTEXT" != '""' ]; then
+                  ns=$(kubens -c)
+                  echo "⎈ ${CONTEXT}|$ns"
+              fi
+          fi
+      }
+
+      POWERLEVEL9K_CUSTOM_PYTHON_VERSION="zsh_python_version"
+      POWERLEVEL9K_CUSTOM_PYTHON_VERSION_BACKGROUND="yellow"
+      POWERLEVEL9K_CUSTOM_PYTHON_VERSION_FOREGROUND="blue"
+
+      POWERLEVEL9K_CUSTOM_DESK_ENV="current_desk_env"
+      POWERLEVEL9K_CUSTOM_DESK_ENV_BACKGROUND="blue"
+
+      POWERLEVEL9K_CUSTOM_K8S_CONTEXT="zsh_k8s_context"
+      POWERLEVEL9K_CUSTOM_K8S_CONTEXT_BACKGROUND="magenta"
+
+      ZSH_THEME="powerlevel9k/powerlevel9k"
+      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_k8s_context custom_desk_env custom_python_version dir newline vcs)
+      POWERLEVEL9K_DISABLE_RPROMPT=true
+      VIRTUAL_ENV_DISABLE_PROMPT=1
+
+      plugins=(git python zsh-autosuggestions desk)
+
+      source $ZSH/oh-my-zsh.sh
+      ###############################################################################

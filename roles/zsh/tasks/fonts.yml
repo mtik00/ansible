@@ -1,0 +1,9 @@
+---
+
+- name: Install powerline font
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - fonts-powerline
+    state: present
