@@ -1,12 +1,14 @@
 ---
 
 - name: git PPA repo
+  become: yes
   ansible.builtin.apt_repository:
     repo: ppa:git-core/ppa
     codename: "{{ ansible_lsb.codename }}"
     state: present
 
 - name: git package
+  become: yes
   ansible.builtin.apt:
     name: git
     state: latest
