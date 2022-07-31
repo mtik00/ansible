@@ -53,4 +53,4 @@
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.env-files.d"
     state: directory
-    mode: 0755
+    mode: "{{ env_d_mode }}"

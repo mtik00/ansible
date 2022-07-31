@@ -4,6 +4,8 @@
   connection: local
   vars_files:
     - .secrets/vars.yml
+  vars:
+    - env_d_mode: '0770'
   roles:
     - role: build-tools
       tags: [ build-tools ]

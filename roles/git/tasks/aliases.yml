@@ -25,12 +25,12 @@
   file:
     path: "{{ ansible_user_dir }}/.env-files.d"
     state: directory
-    mode: 0755
+    mode: "{{ env_d_mode }}"
 
 - name: copy dotfiles
   become: no
   copy:
-    src: files/.env-files
+    src: files/.env-files.d
     dest: "{{ ansible_user_dir }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
