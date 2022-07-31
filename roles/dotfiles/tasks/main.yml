@@ -13,18 +13,6 @@
     group: "{{ ansible_user_id }}"
     mode: 0655
 
-- name: .tmuxinator exists
-  ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/.tmuxinator"
-    state: directory
-
-- name: Create symbolic link for .tmux.conf
-  ansible.builtin.file:
-   src: "{{ ansible_user_dir }}/.dotfiles/.tmux.conf"
-   dest: "{{ ansible_user_dir }}/.tmux.conf"
-   force: yes
-   state: link
-
 - name: Create symbolic link for .direnvrc
   ansible.builtin.file:
    src: "{{ ansible_user_dir }}/.dotfiles/.direnvrc"
