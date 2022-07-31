@@ -1,10 +1,36 @@
 # Setup
 
+## Initial install
+
+You must configure your system if this is the first time you've run `ansible` on a system.
+
+### SSH Key
+```shell
+mkdir --mode 700 -p ~/.ssh && \
+ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/gpx1
+```
+
+Add the public key to your GitHub account:  
+https://github.com/settings/keys
+
+### Clone
+
+You'll need to set up the environment
+
+```shell
+sudo apt-get update && \
+sudo apt-get install --upgrade git && \
+mkdir -p ~/code && \
+cd ~/code && \
+git clonegit@github.com:mtik00/ansible.git
+```
+
+## direnv
+
 Install `direnv`: https://direnv.net/docs/installation.html#from-binary-builds
 
-Ensure you have an activated virtual environment.
+Ensure you have an activated virtual environment, and then run:
 
-Run these in `bash`
 ```shell
 python -m pip install --upgrade pip ansible black
 mkdir -m 0700 -p ./.secrets \
