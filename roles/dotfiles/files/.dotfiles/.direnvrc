@@ -1,3 +1,5 @@
+# WARNING: This file is managed by Ansible.
+
 direnv_layout_dir() {
     echo "${direnv_layout_dir:-$PWD/.direnv}"
 }

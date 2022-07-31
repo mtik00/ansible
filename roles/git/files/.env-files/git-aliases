@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# WARNING: This file is managed by Ansible.
 
 # Gooey git goodness
 alias g='git'

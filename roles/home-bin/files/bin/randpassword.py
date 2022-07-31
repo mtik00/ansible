@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# WARNING: This file is managed by Ansible.
+
 """
 Generates random passwords and writes them to stdout.
 """
