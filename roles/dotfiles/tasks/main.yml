@@ -47,6 +47,7 @@
   ansible.builtin.file:
    src: "{{ ansible_user_dir }}/.dotfiles/.desk"
    dest: "{{ ansible_user_dir }}/.desk"
+   force: yes
    state: link
 
 - name: env-files.d folder

@@ -22,16 +22,28 @@ sudo apt-get update && \
 sudo apt-get install --upgrade git && \
 mkdir -p ~/code && \
 cd ~/code && \
-git clonegit@github.com:mtik00/ansible.git
+git clone git@github.com:mtik00/ansible.git
+```
+
+## python
+
+You might have to install this before direnv will work
+```
+sudo apt install python3.10-venv
 ```
 
 ## direnv
 
 Install `direnv`: https://direnv.net/docs/installation.html#from-binary-builds
+```
+curl -sfL https://direnv.net/install.sh | bash
+eval "$(direnv hook bash)"
+```
 
 Ensure you have an activated virtual environment, and then run:
 
 ```shell
+python -m ensurepip && \
 python -m pip install --upgrade pip ansible black
 mkdir -m 0700 -p ./.secrets \
   && touch ./.secrets/{ansible-vault,env.sh} \
