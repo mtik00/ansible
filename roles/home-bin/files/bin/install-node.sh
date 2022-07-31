@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# WARNING: This file is managed by Ansible.
+
 VER=${1:-16.10.0}
 DEST_DIR=/var/lib/node
 DL=https://nodejs.org/dist/v${VER}/node-v${VER}-linux-x64.tar.xz

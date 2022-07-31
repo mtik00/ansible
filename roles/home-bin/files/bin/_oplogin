@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# WARNING: This file is managed by Ansible.
+
 set -euo pipefail
 IFS=$'\n\t'
 
