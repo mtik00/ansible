@@ -1,2 +1,2 @@
 ---
-# defaults file for dotfiles
+env_d_mode: "0770"

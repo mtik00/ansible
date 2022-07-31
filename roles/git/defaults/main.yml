@@ -1,2 +1,2 @@
 ---
-# defaults file for git
+env_d_mode: "0770"
