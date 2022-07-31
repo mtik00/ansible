@@ -1,0 +1,30 @@
+---
+
+- name: Install tmux packages
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - tmux
+      - tmuxinator
+    state: present
+
+- name: copy dotfiles
+  ansible.builtin.copy:
+    src: files/.dotfiles
+    dest: "{{ ansible_user_dir }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0655
+
+- name: .tmuxinator exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.tmuxinator"
+    state: directory
+
+- name: Create symbolic link for .tmux.conf
+  ansible.builtin.file:
+   src: "{{ ansible_user_dir }}/.dotfiles/.tmux.conf"
+   dest: "{{ ansible_user_dir }}/.tmux.conf"
+   force: yes
+   state: link
