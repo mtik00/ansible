@@ -35,12 +35,6 @@
       # Add local bin directory
       export PATH={{ ansible_user_dir }}/bin:${PATH}
 
-      # Source all files in the env-files.d directory ###############################
-      for f in {{ ansible_user_dir }}/.env-files.d/*; do
-          source "${f}"
-      done
-      ###############################################################################
-
       # Setup up direnv #############################################################
       eval "$(direnv hook zsh)"
       ###############################################################################
