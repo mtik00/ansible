@@ -1,0 +1,23 @@
+---
+
+- name: Add 1password repo
+  become: yes
+  block:
+    - name: 1password | get the key
+      ansible.builtin.shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/1password-archive-keyring.gpg
+
+    - name: 1password | apt source
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main"
+        update_cache: yes
+        state: present
+
+- name: Install 1password package
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time : 600
+    name:
+      - 1password-cli
+    state: present
