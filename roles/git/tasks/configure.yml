@@ -52,3 +52,10 @@
     name: init.defaultBranch
     scope: global
     value: "main"
+
+- name: add signing key
+  ansible.builtin.git_config:
+    name: user.signingkey
+    scope: global
+    value: "{{ git_signing_key }}"
+  when: git_signing_key
