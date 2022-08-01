@@ -27,3 +27,9 @@
     content: |
       default-cache-ttl {{ default_cache_ttl }}
       max-cache-ttl {{ max_cache_ttl }}
+
+- name: Add GPG TTY
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_user_dir }}/.env-files.d/gnupg"
+    line: export GPG_TTY=$(tty)
+    create: yes
