@@ -34,3 +34,15 @@
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/puginz/zsh-autosuggestions"
+
+- name: Make sure env-files.d is last
+  ansible.builtin.blockinfile:
+    insertbefore: EOF
+    marker: "# {mark} ANSIBLE MANAGED BLOCK -- env-files.d"
+    path: "{{ ansible_user_dir }}/.zshrc"
+    block: |
+      # Source all files in the env-files.d directory ###############################
+      for f in {{ ansible_user_dir }}/.env-files.d/*; do
+          source "${f}"
+      done
+      ###############################################################################

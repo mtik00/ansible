@@ -27,7 +27,7 @@
     state: directory
     mode: "{{ env_d_mode }}"
 
-- name: copy dotfiles
+- name: copy env-files.d files
   become: no
   copy:
     src: files/.env-files.d

@@ -23,7 +23,7 @@ alias oplogin='bash ~/bin/_oplogin && source ~/.op-session'
 
 # Docker stuff #########################################################################################################
 alias d='docker'
-complete -F _docker d
+# complete -F _docker d
 alias dbx='docker buildx build --output type=docker'
 alias drb='docker run --rm -it --entrypoint bash'
 alias drs='docker run --rm -it --entrypoint sh'
