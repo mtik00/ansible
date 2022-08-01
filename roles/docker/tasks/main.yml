@@ -4,7 +4,7 @@
   become: yes
   ansible.builtin.apt:
     state: present
-    cache_valid_time : 600
+    cache_valid_time: "{{ cache_valid_time }}"
     name:
       - apt-transport-https
       - aptitude

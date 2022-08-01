@@ -6,7 +6,7 @@
 - name: Install zsh package(s)
   become: yes
   ansible.builtin.apt:
-    cache_valid_time : 600
+    cache_valid_time: "{{ cache_valid_time }}"
     name:
       - zsh
     state: present

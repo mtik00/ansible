@@ -3,7 +3,7 @@
 - name: Install tmux packages
   become: yes
   ansible.builtin.apt:
-    cache_valid_time : 600
+    cache_valid_time: "{{ cache_valid_time }}"
     name:
       - tmux
       - tmuxinator

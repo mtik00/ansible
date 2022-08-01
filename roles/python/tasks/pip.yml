@@ -5,12 +5,14 @@
   register: pip_check
   failed_when: no
   no_log: yes
+  changed_when: false
 
 - name: Check for pip3
   shell: which pip3
   register: pip3_check
   failed_when: no
   no_log: yes
+  changed_when: false
 
 - name: Download pip bootstrap
   get_url:

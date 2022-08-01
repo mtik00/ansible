@@ -64,6 +64,7 @@ with content like this:
 ansible_become_password: XXXX
 git_email: me@example.com
 git_name: Jane Doe
+git_signing_key: XXXX
 ```
 
 # Running

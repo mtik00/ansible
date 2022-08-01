@@ -3,7 +3,7 @@
 - name: Install build utilities
   become: yes
   ansible.builtin.apt:
-    cache_valid_time : 600
+    cache_valid_time: "{{ cache_valid_time }}"
     name:
       - build-essential
       - g++
