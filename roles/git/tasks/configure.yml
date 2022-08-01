@@ -59,3 +59,10 @@
     scope: global
     value: "{{ git_signing_key }}"
   when: git_signing_key
+
+- name: default to sign very commit
+  ansible.builtin.git_config:
+    name: commit.gpgsign
+    scope: global
+    value: "True"
+  when: git_signing_key
