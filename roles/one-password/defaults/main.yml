@@ -1,2 +1,3 @@
 ---
 one_password_gpg_key: /usr/share/keyrings/1password-archive-keyring.gpg
+cache_valid_time: 300
