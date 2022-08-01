@@ -23,6 +23,7 @@
 - name: vimrc
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.vimrc"
+    marker: '" {mark} ANSIBLE MANAGED BLOCK'
     create: yes
     block: |
       set spell spelllang=en_us
