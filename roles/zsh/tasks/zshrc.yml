@@ -18,7 +18,7 @@
       export ZSH="{{ ansible_user_dir }}/.oh-my-zsh"
 
       # Tells 'less' not to paginate if less than a page
-      export LESS="-F -X $LESS"
+      export LESS="-eirMXF"
 
       # Fix bindkeys for some reason
       bindkey '\e[4~' end-of-line
