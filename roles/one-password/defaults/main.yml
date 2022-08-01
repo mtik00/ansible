@@ -1,2 +1,2 @@
 ---
-# defaults file for one-password
+one_password_gpg_key: /usr/share/keyrings/1password-archive-keyring.gpg
