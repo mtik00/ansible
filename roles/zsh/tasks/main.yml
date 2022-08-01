@@ -29,3 +29,8 @@
 
 - name: powerlevel9k
   import_tasks: powerlevel9k.yml
+
+- name: zsh-autosuggestions
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/puginz/zsh-autosuggestions"

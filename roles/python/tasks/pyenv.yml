@@ -1,22 +1,5 @@
-- name: Install pyenv
-  shell: curl https://pyenv.run | bash
-  args:
-    creates: "{{ ansible_user_dir }}/.pyenv/"
-    warn: false
-  register: pyenv_installed
-
-# This is a workaround for `git pull` always seeing a change.
-# pyenv.run does some things, as well as pulling down the git repo.  Updating
-# pyenv is as simple as updating the clone.  Hopefully the install script
-# doesn't change this.
-- name: Update pyenv
-  ansible.builtin.git:
-    repo: https://github.com/pyenv/pyenv.git
-    dest: "{{ ansible_user_dir }}/.pyenv/"
-  register: git_result
-  changed_when: "git_result.after|default('after') != git_result.before|default('before')"
-
 - name: Python dependency packages
+  become: yes
   ansible.builtin.apt:
     name:
     - build-essential
@@ -36,7 +19,24 @@
     - wget
     - xz-utils
     - zlib1g-dev
-  when: pyenv_installed is changed
+
+- name: Install pyenv
+  shell: curl https://pyenv.run | bash
+  args:
+    creates: "{{ ansible_user_dir }}/.pyenv/"
+    warn: false
+  register: pyenv_installed
+
+# This is a workaround for `git pull` always seeing a change.
+# pyenv.run does some things, as well as pulling down the git repo.  Updating
+# pyenv is as simple as updating the clone.  Hopefully the install script
+# doesn't change this.
+- name: Update pyenv
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: "{{ ansible_user_dir }}/.pyenv/"
+  register: git_result
+  changed_when: "git_result.after|default('after') != git_result.before|default('before')"
 
 - name: Pyenv Python versions
   ansible.builtin.command: "{{ ansible_user_dir }}/.pyenv/bin/pyenv install {{ item }}"
