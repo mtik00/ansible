@@ -1,0 +1,8 @@
+---
+- name: Install ripgrep package
+  become: yes
+  ansible.builtin.apt:
+    cache_valid_time: "{{ cache_valid_time }}"
+    name:
+      - ripgrep
+    state: present
