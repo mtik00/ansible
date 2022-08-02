@@ -1,4 +1,9 @@
 ---
+
+- ansible.builtin.assert:
+    that:
+      - env_files_path
+
 - name: Install gnupg package
   become: yes
   ansible.builtin.apt:
@@ -30,6 +35,6 @@
 
 - name: Add GPG TTY
   ansible.builtin.lineinfile:
-    path: "{{ ansible_user_dir }}/.env-files.d/gnupg"
+    path: "{{ env_files_path }}/gnupg"
     line: export GPG_TTY=$(tty)
     create: yes

@@ -1,12 +1,5 @@
 ---
 
-- name: home bin dir exists
-  ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/bin"
-    state: directory
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
-
 - name: home bin files
   ansible.builtin.copy:
     src: files/bin/

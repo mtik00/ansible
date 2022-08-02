@@ -1,4 +1,9 @@
 ---
+
+- ansible.builtin.assert:
+    that:
+      - env_files_path
+
 - name: dotfiles folder
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.dotfiles"
@@ -51,17 +56,11 @@
    force: yes
    state: link
 
-- name: env-files.d folder
-  ansible.builtin.file:
-    path: "{{ ansible_user_dir }}/.env-files.d"
-    state: directory
-    mode: "{{ env_d_mode }}"
-
 - name: copy env-files.d files
   become: no
   copy:
-    src: files/.env-files.d
-    dest: "{{ ansible_user_dir }}"
+    src: files/.env-files.d/
+    dest: "{{ env_files_path }}"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0660

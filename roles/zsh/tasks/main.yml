@@ -1,5 +1,9 @@
 ---
 
+- ansible.builtin.assert:
+    that:
+      - env_files_path
+
 - name: fonts
   import_tasks: fonts.yml
 
@@ -42,7 +46,7 @@
     path: "{{ ansible_user_dir }}/.zshrc"
     block: |
       # Source all files in the env-files.d directory ###############################
-      for f in {{ ansible_user_dir }}/.env-files.d/*; do
+      for f in {{ env_files_path }}/*; do
           source "${f}"
       done
       ###############################################################################
