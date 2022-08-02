@@ -1,25 +1,7 @@
 ---
-
-- name: code folder
-  file:
-    path: "{{ ansible_user_dir }}/code"
+- name: home folders
+  ansible.builtin.file:
     state: directory
-    mode: 0755
-
-- name: ssh folder
-  file:
-    path: "{{ ansible_user_dir }}/.ssh"
-    state: directory
-    mode: 0700
-
-- name: bin folder
-  file:
-    path: "{{ ansible_user_dir }}/bin"
-    state: directory
-    mode: 0700
-
-- name: env-files.d folder
-  file:
-    path: "{{ env_files_path }}"
-    state: directory
-    mode: "{{ env_d_mode }}"
+    path: "{{ item.path }}"
+    mode: "{{ item.mode }}"
+  loop: "{{ folders }}"
