@@ -1,3 +1,14 @@
 ---
 env_d_mode: "0770"
 env_files_path: "{{ ansible_user_dir }}/.env-files.d"
+folders:
+  - path: "{{ ansible_user_dir }}/code"
+    mode: "0755"
+  - path: "{{ ansible_user_dir }}/.ssh"
+    mode: "0700"
+  - path: "{{ ansible_user_dir }}/bin"
+    mode: "0700"
+  - path: "{{ ansible_user_dir }}/.gnupg"
+    mode: "0700"
+  - path: "{{ env_files_path }}"
+    mode: "{{ env_d_mode }}"
