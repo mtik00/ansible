@@ -1,5 +1,9 @@
 ---
 
+- ansible.builtin.assert:
+    that:
+      - env_files_path
+
 - name: package
   import_tasks: package.yml
 

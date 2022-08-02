@@ -17,3 +17,9 @@
     path: "{{ ansible_user_dir }}/bin"
     state: directory
     mode: 0700
+
+- name: env-files.d folder
+  file:
+    path: "{{ env_files_path }}"
+    state: directory
+    mode: "{{ env_d_mode }}"
