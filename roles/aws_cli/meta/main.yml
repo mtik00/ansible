@@ -1,0 +1,16 @@
+---
+
+galaxy_info:
+  author: Tim McFadden
+  description: A role to install and configure AWS cli
+  company: ""
+  issue_tracker_url: https://github.com/mtik00/ansible/issues
+  license: MIT
+  min_ansible_version: "2.1"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - "jammy"
+  galaxy_tags: []
+
+dependencies: []

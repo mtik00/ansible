@@ -15,6 +15,7 @@
     configure_vault: true
     configure_zoom: false  # only enable outside of WSL
     configure_zscaler: true
+    configure_aws_cli: true
 
   roles:
     - role: build_tools
@@ -55,3 +56,5 @@
       tags: [saml2aws]
     - role: insomnia
       tags: [insomnia]
+    - role: aws_cli
+      tags: [aws_cli]
