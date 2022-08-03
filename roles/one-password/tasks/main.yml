@@ -4,7 +4,7 @@
   import_tasks: facts.yml
 
 - name: Add 1password repo
-  become: yes
+  become: true
   block:
     - name: 1password | get the key
       ansible.builtin.shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output {{ one_password_gpg_key }}
@@ -18,7 +18,7 @@
         state: present
 
 - name: Install 1password package
-  become: yes
+  become: true
   ansible.builtin.apt:
     cache_valid_time: "{{ cache_valid_time }}"
     name:
