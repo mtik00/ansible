@@ -1,0 +1,32 @@
+---
+
+- name: Install vault CLI
+  when: configure_vault is true
+  block:
+    - name: get arch
+      ansible.builtin.command: dpkg --print-architecture
+      register: dpkg_arch_shell
+      changed_when: false
+
+    - name: set arch fact
+      ansible.builtin.set_fact:
+        dpkg_arch: "{{ dpkg_arch_shell.stdout }}"
+
+    - name: Add an apt key by id for hashicorp
+      become: true
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        state: present
+
+    - name: Add Hashicorp repository into sources list
+      become: true
+      ansible.builtin.apt_repository:
+        repo: deb [arch={{ dpkg_arch }}] https://apt.releases.hashicorp.com {{ ansible_lsb.codename }} main
+        state: present
+
+    - name: Install vault
+      become: true
+      ansible.builtin.apt:
+        cache_valid_time: "{{ apt_cache_valid_time }}"
+        name:
+          - vault

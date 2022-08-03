@@ -9,8 +9,10 @@
     env_files_path: "{{ ansible_user_dir }}/.env-files.d"
     apt_cache_valid_time: 600
     gnupg_default_cache_ttl: 28800  # 8 hours
+
     configure_zscaler: true
     configure_zoom: false
+    configure_vault: true
   roles:
     - role: build_tools
       tags: [build_tools]
@@ -42,3 +44,5 @@
       tags: [zscaler]
     - role: zoom
       tags: [zoom]
+    - role: vault
+      tags: [vault]
