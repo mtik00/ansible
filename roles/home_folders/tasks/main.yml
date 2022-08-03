@@ -12,3 +12,4 @@
     path: "{{ item.path }}"
     mode: "{{ item.mode }}"
   loop: "{{ additional_folders }}"
+  when: additional_folders
