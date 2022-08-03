@@ -1,3 +1,10 @@
+# Ansible playbooks for localhost config
+
+The roles make the following assumptions:
+  - zsh will be the default shell
+  - `~/bin` is added to the path
+  - `~/.env-files.d` is used to source any shell config files
+
 # Setup
 
 ## Initial install

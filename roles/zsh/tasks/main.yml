@@ -21,6 +21,7 @@
   args:
     creates: "{{ ansible_user_dir }}/.oh-my-zsh/lib/"
     warn: false
+    executable: /bin/bash
   become: false
 
 - name: make zsh default
