@@ -6,62 +6,62 @@
       - lookup('ansible.builtin.vars', 'git_name') != ""
 
 - name: use vim for git
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: core.editor
     scope: global
     value: vim
 
 - name: set git email
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: user.email
     scope: global
     value: "{{ lookup('ansible.builtin.vars', 'git_email') }}"
 
 - name: set git name
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: user.name
     scope: global
     value: "{{ lookup('ansible.builtin.vars', 'git_name') }}"
 
 - name: use meld for diff tool
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: diff.tool
     scope: global
     value: meld
 
 - name: don't prompt for meld diff
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: difftool.prompt
     scope: global
     value: "False"
 
 - name: use meld for merge tool
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: merge.tool
     scope: global
     value: meld
 
 - name: don't prompt for meld merge
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: mergetool.prompt
     scope: global
     value: "False"
 
 - name: change init branch name
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: init.defaultBranch
     scope: global
     value: "main"
 
 - name: add signing key
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: user.signingkey
     scope: global
     value: "{{ git_signing_key }}"
   when: git_signing_key
 
 - name: default to sign very commit
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: commit.gpgsign
     scope: global
     value: "True"
