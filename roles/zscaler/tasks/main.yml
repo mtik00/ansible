@@ -61,6 +61,7 @@
           export SSL_CERT_FILE=$ZSCALER_CERTIFICATE_BUNDLE
 
     - name: install zscaler  # noqa command-instead-of-module
+      become: true
       ansible.builtin.command: |
           wget -O /tmp/zscaler {{ zscaler_install_url }}
           bash /tmp/zscaler
