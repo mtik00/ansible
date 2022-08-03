@@ -44,10 +44,11 @@ Ensure you have an activated virtual environment, and then run:
 
 ```shell
 python -m ensurepip && \
-python -m pip install --upgrade pip ansible black
+python -m pip install --upgrade pip ansible black pre-commit
 mkdir -m 0700 -p ./.secrets \
   && touch ./.secrets/{ansible-vault,env.sh} \
   && find ./.secrets -type f -name "*" -exec chmod 600 {} \;
+ansible-galaxy install -r requirements.yml
 ```
 
 ## ansible-vault setup
@@ -71,4 +72,11 @@ git_signing_key: XXXX
 
 ```
 ansible-playbook playbook.yml
+```
+
+# Developing
+
+You should make sure pre-commit is installed by running this command once:
+```
+pre-commit install
 ```

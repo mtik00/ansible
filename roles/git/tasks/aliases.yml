@@ -1,7 +1,7 @@
 ---
 
 - name: git aliases
-  ansible.builtin.git_config:
+  community.general.git_config:
     name: alias.{{item.command}}
     scope: global
     value: "{{item.alias}}"
