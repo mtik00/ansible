@@ -10,6 +10,7 @@
     apt_cache_valid_time: 600
     gnupg_default_cache_ttl: 28800  # 8 hours
     configure_zscaler: true
+    configure_zoom: false
   roles:
     - role: build_tools
       tags: [build_tools]
@@ -39,3 +40,5 @@
       tags: [ripgrep]
     - role: zscaler
       tags: [zscaler]
+    - role: zoom
+      tags: [zoom]
