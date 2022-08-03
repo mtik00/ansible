@@ -13,9 +13,9 @@
     block: |
       # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
       # ZSH_THEME="agnoster"
-      current_desk_env(){
-          [[ -n "${DESK_NAME}" ]] && echo -n "📝 ${DESK_NAME}"
-      }
+      #current_desk_env(){
+      #    [[ -n "${DESK_NAME}" ]] && echo -n "📝 ${DESK_NAME}"
+      #}
 
       zsh_python_version(){
 
@@ -42,22 +42,26 @@
           fi
       }
 
+      HOST_LOWER=$(hostname | tr '[:upper:]' '[:lower:]')
       POWERLEVEL9K_CUSTOM_PYTHON_VERSION="zsh_python_version"
       POWERLEVEL9K_CUSTOM_PYTHON_VERSION_BACKGROUND="yellow"
       POWERLEVEL9K_CUSTOM_PYTHON_VERSION_FOREGROUND="blue"
+      POWERLEVEL9K_CONTEXT_TEMPLATE="%n${HOST_LOWER}"
 
-      POWERLEVEL9K_CUSTOM_DESK_ENV="current_desk_env"
-      POWERLEVEL9K_CUSTOM_DESK_ENV_BACKGROUND="blue"
+      # POWERLEVEL9K_CUSTOM_DESK_ENV="current_desk_env"
+      # POWERLEVEL9K_CUSTOM_DESK_ENV_BACKGROUND="blue"
 
       POWERLEVEL9K_CUSTOM_K8S_CONTEXT="zsh_k8s_context"
       POWERLEVEL9K_CUSTOM_K8S_CONTEXT_BACKGROUND="magenta"
 
       ZSH_THEME="powerlevel9k/powerlevel9k"
-      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_k8s_context custom_desk_env custom_python_version dir newline vcs)
+      # POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_k8s_context custom_desk_env custom_python_version dir newline vcs)
+      POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_k8s_context custom_python_version dir newline vcs)
       POWERLEVEL9K_DISABLE_RPROMPT=true
       VIRTUAL_ENV_DISABLE_PROMPT=1
 
-      plugins=(git python zsh-autosuggestions desk)
+      # plugins=(git python zsh-autosuggestions desk)
+      plugins=(git python zsh-autosuggestions)
 
       source $ZSH/oh-my-zsh.sh
       ###############################################################################
