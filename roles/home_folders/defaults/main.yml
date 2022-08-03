@@ -1,7 +1,7 @@
 ---
 env_d_mode: "0770"
 env_files_path: "{{ ansible_user_dir }}/.env-files.d"
-folders:
+home_folders:
   - path: "{{ ansible_user_dir }}/code"
     mode: "0755"
   - path: "{{ ansible_user_dir }}/.ssh"

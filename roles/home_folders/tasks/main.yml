@@ -4,4 +4,4 @@
     state: directory
     path: "{{ item.path }}"
     mode: "{{ item.mode }}"
-  loop: "{{ folders }}"
+  loop: "{{ home_folders }}"
