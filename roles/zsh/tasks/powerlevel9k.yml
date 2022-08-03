@@ -3,6 +3,7 @@
 - name: powerlevel9k theme
   ansible.builtin.git:
     repo: https://github.com/bhilburn/powerlevel9k.git
+    version: v0.6.7
     dest: "{{ ansible_user_dir }}/.oh-my-zsh/custom/themes/powerlevel9k"
 
 - name: Configure powerlevel9k theme
