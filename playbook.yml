@@ -5,9 +5,9 @@
   vars_files:
     - .secrets/vars.yml
   vars:
-    - env_d_mode: '0770'
-    - env_files_path: "{{ ansible_user_dir }}/.env-files.d"
-    - cache_valid_time: 600
+    env_d_mode: '0770'
+    env_files_path: "{{ ansible_user_dir }}/.env-files.d"
+    cache_valid_time: 600
   roles:
     - role: build-tools
       tags: [ build-tools ]
