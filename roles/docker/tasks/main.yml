@@ -11,6 +11,15 @@
       - ca-certificates
       - curl
 
+# NOTE: This is a bit sketchy and untested
+- name: Run update-alternatives
+  become: true
+  community.general.alternatives:
+    name: iptables-alterntative
+    link: /usr/sbin/iptables
+    path: /usr/sbin/iptables-legacy
+  when: lookup('env','WSL_DISTRO_NAME') != ""
+
 - name: Add Docker GPG apt Key
   become: true
   ansible.builtin.apt_key:
@@ -26,7 +35,7 @@
 - name: Update apt and install docker-ce
   become: true
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
     name: docker-ce
     state: present
 
@@ -34,6 +43,6 @@
   become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
-    append: yes
+    append: true
     groups:
       - docker
