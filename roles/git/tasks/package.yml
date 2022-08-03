@@ -11,4 +11,4 @@
   become: true
   ansible.builtin.apt:
     name: git
-    state: latest
+    state: present

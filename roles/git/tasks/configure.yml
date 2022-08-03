@@ -1,6 +1,7 @@
 ---
 
-- ansible.builtin.assert:
+- name: check for required variables
+  ansible.builtin.assert:
     that:
       - lookup('ansible.builtin.vars', 'git_email') != ""
       - lookup('ansible.builtin.vars', 'git_name') != ""
