@@ -49,3 +49,5 @@
       tags: [vault]
     - role: scaleft
       tags: [scaleft]
+    - role: saml2aws
+      tags: [saml2aws]

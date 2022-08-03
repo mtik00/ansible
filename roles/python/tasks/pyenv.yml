@@ -27,6 +27,7 @@
   args:
     creates: "{{ ansible_user_dir }}/.pyenv/"
     warn: false
+    executable: /bin/bash
   register: pyenv_installed
 
 # This is a workaround for `git pull` always seeing a change.
