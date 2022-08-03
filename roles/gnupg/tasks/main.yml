@@ -8,7 +8,7 @@
 - name: Install gnupg package
   become: true
   ansible.builtin.apt:
-    cache_valid_time: "{{ cache_valid_time }}"
+    cache_valid_time: "{{ apt_cache_valid_time }}"
     name:
       - gpg
     state: present
@@ -31,8 +31,8 @@
     dest: "{{ ansible_user_dir }}/.gnupg/gpg-agent.conf"
     mode: "0600"
     content: |
-      default-cache-ttl {{ default_cache_ttl }}
-      max-cache-ttl {{ max_cache_ttl }}
+      default-cache-ttl {{ gnupg_default_cache_ttl }}
+      max-cache-ttl {{ gnupg_max_cache_ttl }}
 
 - name: Add GPG TTY
   ansible.builtin.lineinfile:

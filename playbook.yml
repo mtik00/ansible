@@ -7,8 +7,8 @@
   vars:
     env_d_mode: '0770'
     env_files_path: "{{ ansible_user_dir }}/.env-files.d"
-    cache_valid_time: 600
-    default_cache_ttl: 28800  # 8 hours
+    apt_cache_valid_time: 600
+    gnupg_default_cache_ttl: 28800  # 8 hours
   roles:
     - role: build_tools
       tags: [build_tools]
