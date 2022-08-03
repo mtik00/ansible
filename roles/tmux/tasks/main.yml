@@ -21,10 +21,11 @@
   ansible.builtin.file:
     path: "{{ ansible_user_dir }}/.tmuxinator"
     state: directory
+    mode: 0755
 
 - name: Create symbolic link for .tmux.conf
   ansible.builtin.file:
-   src: "{{ ansible_user_dir }}/.dotfiles/.tmux.conf"
-   dest: "{{ ansible_user_dir }}/.tmux.conf"
-   force: yes
-   state: link
+    src: "{{ ansible_user_dir }}/.dotfiles/.tmux.conf"
+    dest: "{{ ansible_user_dir }}/.tmux.conf"
+    force: true
+    state: link
