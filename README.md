@@ -19,17 +19,10 @@ You'll need to set up the environment
 
 ```shell
 sudo apt-get update && \
-sudo apt-get install --upgrade git && \
+sudo apt-get install --upgrade git python3.10-venv && \
 mkdir -p ~/code && \
 cd ~/code && \
 git clone git@github.com:mtik00/ansible.git
-```
-
-## python
-
-You might have to install this before direnv will work
-```
-sudo apt install python3.10-venv
 ```
 
 ## direnv
@@ -44,7 +37,8 @@ Ensure you have an activated virtual environment, and then run:
 
 ```shell
 python -m ensurepip && \
-python -m pip install --upgrade pip ansible black pre-commit
+python -m pip install --upgrade pip &&
+python -m pip install -r requirements.txt
 mkdir -m 0700 -p ./.secrets \
   && touch ./.secrets/{ansible-vault,env.sh} \
   && find ./.secrets -type f -name "*" -exec chmod 600 {} \;
@@ -53,7 +47,7 @@ ansible-galaxy install -r requirements.yml
 
 ## ansible-vault setup
 
-Find the vault password and put it in `./.secrets/ansible-vault`
+Find the vault password (or create a new one) and put it in `./.secrets/ansible-vault`.
 
 Create the ansible sudo password file:
 ```
