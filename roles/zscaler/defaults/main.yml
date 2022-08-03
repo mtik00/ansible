@@ -1,0 +1,3 @@
+---
+configure_zscaler: false
+zscaler_install_url: https://d32a6ru7mhaq0c.cloudfront.net/Zscaler-linux-1.2.1.3-installer.run

@@ -1,0 +1,41 @@
+---
+- name: Configure work-specific items
+  hosts: localhost
+  connection: local
+  vars_files:
+    - .secrets/vars.yml
+  vars:
+    env_d_mode: '0770'
+    env_files_path: "{{ ansible_user_dir }}/.env-files.d"
+    apt_cache_valid_time: 600
+    gnupg_default_cache_ttl: 28800  # 8 hours
+    configure_zscaler: true
+  roles:
+    - role: build_tools
+      tags: [build_tools]
+    - role: git
+      tags: [git]
+    - role: dotfiles
+      tags: [dotfiles]
+    - role: zsh
+      tags: [zsh]
+    - role: home_bin
+      tags: [home_bin]
+    - role: home_folders
+      tags: [home_folders]
+    - role: python
+      tags: [python]
+    - role: gnupg
+      tags: [gnupg]
+    - role: pass
+      tags: [pass]
+    - role: docker
+      tags: [docker]
+    - role: tmux
+      tags: [tmux]
+    - role: one_password
+      tags: [one_password]
+    - role: ripgrep
+      tags: [ripgrep]
+    - role: zscaler
+      tags: [zscaler]
