@@ -1,7 +1,7 @@
 ---
 
 - name: Modify default .zshrc
-  ansible.builtin.blockinfile: # noqa var-spacing
+  ansible.builtin.blockinfile:  # noqa var-spacing
     insertbefore: BOF
     marker: "# {mark} ANSIBLE MANAGED BLOCK -- Common"
     path: "{{ ansible_user_dir }}/.zshrc"
