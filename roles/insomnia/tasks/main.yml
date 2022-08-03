@@ -1,0 +1,26 @@
+---
+
+- name: Install Insomnia
+  when: configure_insomnia is true
+  block:
+    - name: get arch
+      ansible.builtin.command: dpkg --print-architecture
+      register: dpkg_arch_shell
+      changed_when: false
+
+    - name: set arch fact
+      ansible.builtin.set_fact:
+        dpkg_arch: "{{ dpkg_arch_shell.stdout }}"
+
+    - name: Add Insomnia Repository
+      become: true
+      ansible.builtin.apt_repository:
+        repo: deb [trusted=yes arch={{ dpkg_arch }}] https://download.konghq.com/insomnia-ubuntu/ default all
+        state: present
+
+    - name: Update apt and install insomnia
+      become: true
+      ansible.builtin.apt:
+        cache_valid_time: "{{ apt_cache_valid_time }}"
+        name: insomnia
+        state: present
