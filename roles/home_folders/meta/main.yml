@@ -11,6 +11,4 @@ galaxy_info:
         - "jammy"
   galaxy_tags: []
 
-dependencies:
-  - role: dotfiles
-  - role: home_folders
+dependencies: []
