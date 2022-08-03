@@ -1,7 +1,7 @@
 ---
 env_d_mode: "0770"
 env_files_path: "{{ ansible_user_dir }}/.env-files.d"
-home_folders:
+base_home_folders:
   - path: "{{ ansible_user_dir }}/code"
     mode: "0755"
   - path: "{{ ansible_user_dir }}/.ssh"
@@ -12,3 +12,7 @@ home_folders:
     mode: "0700"
   - path: "{{ env_files_path }}"
     mode: "{{ env_d_mode }}"
+
+# Any additional folders you want to create.  This is best set in a specific
+# playbook.
+additional_folders: []

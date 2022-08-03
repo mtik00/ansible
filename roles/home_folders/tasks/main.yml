@@ -4,4 +4,11 @@
     state: directory
     path: "{{ item.path }}"
     mode: "{{ item.mode }}"
-  loop: "{{ home_folders }}"
+  loop: "{{ base_home_folders }}"
+
+- name: additional folders
+  ansible.builtin.file:
+    state: directory
+    path: "{{ item.path }}"
+    mode: "{{ item.mode }}"
+  loop: "{{ additional_folders }}"
