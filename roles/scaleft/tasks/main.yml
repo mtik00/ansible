@@ -1,0 +1,48 @@
+---
+
+- name: Ensure ssh ScaleFT exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/share/ScaleFT"
+    state: directory
+    mode: 0700
+
+- name: Set up scaleft_config
+  ansible.builtin.blockinfile:
+    marker: "# {mark} GitPrime SSH -- ANSIBLE MANAGED BLOCK"
+    path: "{{ ansible_user_dir }}/.ssh/scaleft_config"
+    mode: 0600
+    create: true
+    block: |
+      Match exec "/usr/bin/sft resolve -q  %h"
+        ProxyCommand "/usr/bin/sft" proxycommand  %h
+        UserKnownHostsFile {{ ansible_user_dir }}/.local/share/ScaleFT/proxycommand_known_hosts
+
+- name: create scp/ssh aliases file
+  ansible.builtin.copy:
+    dest: "{{ env_files_path }}/50-scaleft"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0600
+    content: |
+      alias scp='scp -F {{ ansible_user_dir }}/.ssh/scaleft_config'
+      alias ssh='ssh -F {{ ansible_user_dir }}/.ssh/scaleft_config'
+
+- name: Add an apt key by id for scaleft
+  become: true
+  ansible.builtin.apt_key:
+    url: https://dist.scaleft.com/pki/scaleft_deb_key.asc
+    state: present
+
+- name: Add scaleft repository into sources list
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb http://pkg.scaleft.com/deb linux main
+    state: present
+
+- name: Install scaleft client tools
+  become: true
+  ansible.builtin.apt:
+    cache_valid_time: "{{ apt_cache_valid_time }}"
+    name:
+      - scaleft-client-tools
+      - scaleft-url-handler
