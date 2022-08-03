@@ -1,6 +1,7 @@
 ---
 
-- ansible.builtin.assert:
+- name: check for required variables
+  ansible.builtin.assert:
     that:
       - env_files_path
 
@@ -20,16 +21,17 @@
 
 - name: Create symbolic link for .direnvrc
   ansible.builtin.file:
-   src: "{{ ansible_user_dir }}/.dotfiles/.direnvrc"
-   dest: "{{ ansible_user_dir }}/.direnvrc"
-   force: yes
-   state: link
+    src: "{{ ansible_user_dir }}/.dotfiles/.direnvrc"
+    dest: "{{ ansible_user_dir }}/.direnvrc"
+    force: true
+    state: link
 
 - name: vimrc
   ansible.builtin.blockinfile:
     path: "{{ ansible_user_dir }}/.vimrc"
     marker: '" {mark} ANSIBLE MANAGED BLOCK'
-    create: yes
+    create: true
+    mode: 0755
     block: |
       set spell spelllang=en_us
       hi clear SpellBad
@@ -51,14 +53,14 @@
 
 - name: Create symbolic link for .desk
   ansible.builtin.file:
-   src: "{{ ansible_user_dir }}/.dotfiles/.desk"
-   dest: "{{ ansible_user_dir }}/.desk"
-   force: yes
-   state: link
+    src: "{{ ansible_user_dir }}/.dotfiles/.desk"
+    dest: "{{ ansible_user_dir }}/.desk"
+    force: true
+    state: link
 
 - name: copy env-files.d files
   become: false
-  copy:
+  ansible.builtin.copy:
     src: files/.env-files.d/
     dest: "{{ env_files_path }}"
     owner: "{{ ansible_user_id }}"
