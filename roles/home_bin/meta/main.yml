@@ -1,6 +1,6 @@
 galaxy_info:
   author: Tim McFadden
-  description: A role to set up some local folders
+  description: A role to set up a local bin folder
   company: ""
   issue_tracker_url: https://github.com/mtik00/ansible/issues
   license: MIT
@@ -11,4 +11,5 @@ galaxy_info:
         - "jammy"
   galaxy_tags: []
 
-dependencies: []
+dependencies:
+  - role: home_folders

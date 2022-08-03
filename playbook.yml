@@ -17,8 +17,8 @@
       tags: [ dotfiles ]
     - role: zsh
       tags: [ zsh ]
-    - role: home-bin
-      tags: [ home-bin ]
+    - role: home_bin
+      tags: [ home_bin ]
     - role: home_folders
       tags: [ home_folders ]
     - role: python
