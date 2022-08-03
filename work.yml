@@ -10,10 +10,12 @@
     apt_cache_valid_time: 600
     gnupg_default_cache_ttl: 28800  # 8 hours
 
-    configure_zscaler: true
-    configure_zoom: false  # only enable outside of WSL
-    configure_vault: true
+    configure_insomnia: false  # only enable outside of WSL
     configure_scaleft: true
+    configure_vault: true
+    configure_zoom: false  # only enable outside of WSL
+    configure_zscaler: true
+
   roles:
     - role: build_tools
       tags: [build_tools]
@@ -51,3 +53,5 @@
       tags: [scaleft]
     - role: saml2aws
       tags: [saml2aws]
+    - role: insomnia
+      tags: [insomnia]
