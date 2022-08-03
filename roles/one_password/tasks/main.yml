@@ -6,7 +6,7 @@
 - name: Add 1password repo
   become: true
   block:
-    - name: 1password | get the key
+    - name: 1password | get the key # noqa command-instead-of-module
       ansible.builtin.shell: curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --dearmor --output {{ one_password_gpg_key }}
       args:
         creates: "{{ one_password_gpg_key }}"
@@ -14,7 +14,7 @@
     - name: 1password | apt source
       ansible.builtin.apt_repository:
         repo: "deb [arch={{ dpkg_arch }} signed-by={{ one_password_gpg_key }}] https://downloads.1password.com/linux/debian/{{ dpkg_arch }} stable main"
-        update_cache: yes
+        update_cache: true
         state: present
 
 - name: Install 1password package
