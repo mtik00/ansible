@@ -8,7 +8,7 @@
   import_tasks: fonts.yml
 
 - name: Install zsh package(s)
-  become: yes
+  become: true
   ansible.builtin.apt:
     cache_valid_time: "{{ cache_valid_time }}"
     name:
@@ -20,10 +20,10 @@
   args:
     creates: "{{ ansible_user_dir }}/.oh-my-zsh/lib/"
     warn: false
-  become: no
+  become: false
 
 - name: make zsh default
-  become: yes
+  become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh

@@ -1,5 +1,5 @@
 - name: Python dependency packages
-  become: yes
+  become: true
   ansible.builtin.apt:
     name:
     - build-essential

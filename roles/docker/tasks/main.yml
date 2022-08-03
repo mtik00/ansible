@@ -1,7 +1,7 @@
 ---
 
 - name: Install required system packages
-  become: yes
+  become: true
   ansible.builtin.apt:
     state: present
     cache_valid_time: "{{ cache_valid_time }}"
@@ -12,26 +12,26 @@
       - curl
 
 - name: Add Docker GPG apt Key
-  become: yes
+  become: true
   ansible.builtin.apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
 
 - name: Add Docker Repository
-  become: yes
+  become: true
   ansible.builtin.apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb.codename }} stable
     state: present
 
 - name: Update apt and install docker-ce
-  become: yes
+  become: true
   ansible.builtin.apt:
     update_cache: yes
     name: docker-ce
     state: present
 
 - name: Add user to docker group
-  become: yes
+  become: true
   ansible.builtin.user:
     name: "{{ ansible_user_id }}"
     append: yes

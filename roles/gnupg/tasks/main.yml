@@ -5,7 +5,7 @@
       - env_files_path
 
 - name: Install gnupg package
-  become: yes
+  become: true
   ansible.builtin.apt:
     cache_valid_time: "{{ cache_valid_time }}"
     name:
