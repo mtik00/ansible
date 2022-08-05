@@ -14,10 +14,17 @@
 # NOTE: This is a bit sketchy and untested.  I can't figure out why the community
 # version of update-alternatives constantly failed, so there's this.  Also,
 # this only appears to be needed in WSL, not regular Ubuntu.
-- name: Run update-alternatives
+- name: Get stats of the iptables link
+  ansible.builtin.stat:
+    path: /etc/alternatives/iptables
+  register: iptables_symlink
+
+- name: update alternatives
   become: true
   ansible.builtin.command: update-alternatives --set iptables /usr/sbin/iptables-legacy
-  when: lookup('env','WSL_DISTRO_NAME') != ""
+  when:
+    - lookup('env','WSL_DISTRO_NAME') != ""
+    - iptables_symlink.stat.islnk is not defined or iptables_symlink.stat.lnk_target != "/usr/sbin/iptables-legacy"
 
 - name: Add Docker GPG apt Key
   become: true
