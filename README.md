@@ -13,6 +13,11 @@ ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/gpx1
 Add the public key to your GitHub account:  
 https://github.com/settings/keys
 
+See your installed keys with:
+```
+gpg --list-secret-keys --keyid-format=long
+```
+
 ### Clone
 
 You'll need to set up the environment
