@@ -11,13 +11,12 @@
       - ca-certificates
       - curl
 
-# NOTE: This is a bit sketchy and untested
+# NOTE: This is a bit sketchy and untested.  I can't figure out why the community
+# version of update-alternatives constantly failed, so there's this.  Also,
+# this only appears to be needed in WSL, not regular Ubuntu.
 - name: Run update-alternatives
   become: true
-  community.general.alternatives:
-    name: iptables-alterntative
-    link: /usr/sbin/iptables
-    path: /usr/sbin/iptables-legacy
+  ansible.builtin.command: update-alternatives --set iptables /usr/sbin/iptables-legacy
   when: lookup('env','WSL_DISTRO_NAME') != ""
 
 - name: Add Docker GPG apt Key
