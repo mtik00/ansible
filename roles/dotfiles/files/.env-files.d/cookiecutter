@@ -1,0 +1,1 @@
+export COOKIECUTTER_CONFIG={{ ansible_user_dir }}/.dotfiles/cookie-cutter.yml
