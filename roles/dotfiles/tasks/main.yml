@@ -4,6 +4,9 @@
   ansible.builtin.assert:
     that:
       - env_files_path
+      - github_username
+      - git_name
+      - git_email
 
 - name: dotfiles folder
   ansible.builtin.file:
@@ -66,3 +69,25 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_id }}"
     mode: 0660
+
+- name: create cookiecutter env file
+  ansible.builtin.copy:
+    dest: "{{ env_files_path }}/cookie-cutter"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0660
+    content: export COOKIECUTTER_CONFIG={{ ansible_user_dir }}/.dotfiles/cookie-cutter.yml
+
+- name: create cookiecutter default file
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.dotfiles/cookie-cutter.yml"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_id }}"
+    mode: 0660
+    content: |
+      ---
+
+      default_context:
+        full_name: "{{ git_name }}"
+        email: "{{ git_email }}"
+        github_username: "{{ github_username }}"
