@@ -1,4 +1,0 @@
----
-apt_cache_valid_time: 300
-gnupg_default_cache_ttl: 3600
-gnupg_max_cache_ttl: 86400
