@@ -11,6 +11,8 @@ roles:
     src: https://github.com/mtik00/ansible-role-gnupg.git
   - name: docker
     src: https://github.com/mtik00/ansible-role-docker.git
+  - name: tmux
+    src: https://github.com/mtik00/ansible-role-tmux.git
 
 collections:
   - name: community.general
