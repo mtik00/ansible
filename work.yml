@@ -30,8 +30,8 @@
       tags: [home_bin]
     - role: home_folders
       tags: [home_folders]
-    - role: python
-      tags: [python]
+    - role: pyenv
+      tags: [pyenv]
     - role: gnupg
       tags: [gnupg]
     - role: pass

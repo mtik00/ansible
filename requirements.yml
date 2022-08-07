@@ -5,6 +5,8 @@ roles:
     src: https://github.com/mtik00/ansible-role-build-tools.git
   - name: pyenv
     src: https://github.com/mtik00/ansible-role-pyenv.git
+  - name: aws_cli
+    src: https://github.com/mtik00/ansible-role-aws-cli.git
 
 collections:
   - name: community.general
