@@ -1,18 +1,41 @@
 ---
 
 roles:
-  - name: build_tools
-    src: https://github.com/mtik00/ansible-role-build-tools.git
-  - name: pyenv
-    src: https://github.com/mtik00/ansible-role-pyenv.git
-  - name: aws_cli
-    src: https://github.com/mtik00/ansible-role-aws-cli.git
-  - name: gnupg
-    src: https://github.com/mtik00/ansible-role-gnupg.git
-  - name: docker
-    src: https://github.com/mtik00/ansible-role-docker.git
-  - name: tmux
-    src: https://github.com/mtik00/ansible-role-tmux.git
+  - name: mtik00.build_tools
+    src: git+https://github.com/mtik00/ansible-role-build-tools.git
+
+  - name: mtik00.git
+    src: git+https://github.com/mtik00/ansible-role-git.git
+
+  - name: mtik00.dotfiles
+    src: git+https://github.com/mtik00/ansible-role-dotfiles.git
+
+  - name: mtik00.zsh
+    src: git+https://github.com/mtik00/ansible-role-zsh.git
+
+  - name: mtik00.home_bin
+    src: git+https://github.com/mtik00/ansible-role-home-bin.git
+
+  - name: mtik00.home_folders
+    src: git+https://github.com/mtik00/ansible-role-home-folders.git
+
+  - name: mtik00.pyenv
+    src: git+https://github.com/mtik00/ansible-role-pyenv.git
+
+  - name: mtik00.gnupg
+    src: git+https://github.com/mtik00/ansible-role-gnupg.git
+
+  - name: mtik00.docker
+    src: git+https://github.com/mtik00/ansible-role-docker.git
+
+  - name: mtik00.tmux
+    src: git+https://github.com/mtik00/ansible-role-tmux.git
+
+  - name: mtik00.desk
+    src: git+https://github.com/mtik00/ansible-role-desk.git
+
+  - name: mtik00.one_password
+    src: git+https://github.com/mtik00/ansible-role-onepassword-cli.git
 
 collections:
   - name: community.general

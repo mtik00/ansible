@@ -17,44 +17,73 @@
     configure_zscaler: true
     configure_aws_cli: true
 
+  tasks:
+    - name: Install common apt packages
+      become: true
+      ansible.builtin.apt:
+        state: present
+        cache_valid_time: "{{ apt_cache_valid_time }}"
+        name:
+          - curl
+          - pass
+          - pass-extension-otp
+          - ripgrep
+
   roles:
-    - role: build_tools
+    - role: mtik00.build_tools
       tags: [build_tools]
-    - role: git
+
+    - role: mtik00.git
       tags: [git]
-    - role: dotfiles
+
+    - role: mtik00.dotfiles
       tags: [dotfiles]
-    - role: zsh
+
+    - role: mtik00.zsh
       tags: [zsh]
-    - role: home_bin
+
+    - role: mtik00.home_bin
       tags: [home_bin]
-    - role: home_folders
+
+    - role: mtik00.home_folders
       tags: [home_folders]
-    - role: pyenv
+      vars:
+        additional_folders:
+          - name: gp
+            mode: '0770'
+
+    - role: mtik00.pyenv
       tags: [pyenv]
-    - role: gnupg
+
+    - role: mtik00.gnupg
       tags: [gnupg]
-    - role: pass
-      tags: [pass]
-    - role: docker
+
+    - role: mtik00.docker
       tags: [docker]
-    - role: tmux
+
+    - role: mtik00.tmux
       tags: [tmux]
-    - role: one_password
+
+    - role: mtik00.one_password
       tags: [one_password]
-    - role: ripgrep
-      tags: [ripgrep]
-    - role: zscaler
+
+    - role: mtik00.zscaler
       tags: [zscaler]
+
     - role: zoom
       tags: [zoom]
+
     - role: vault
       tags: [vault]
+
     - role: scaleft
       tags: [scaleft]
-    - role: saml2aws
+
+    - role: mtik00.saml2aws
       tags: [saml2aws]
+
     - role: insomnia
       tags: [insomnia]
+
     - role: aws_cli
       tags: [aws_cli]
