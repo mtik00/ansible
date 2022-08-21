@@ -9,30 +9,52 @@
     env_files_path: "{{ ansible_user_dir }}/.env-files.d"
     apt_cache_valid_time: 600
     gnupg_default_cache_ttl: 28800  # 8 hours
+    install_completions_oh_my_zsh: true
+  tasks:
+    - name: Install common apt packages
+      become: true
+      ansible.builtin.apt:
+        state: present
+        cache_valid_time: "{{ apt_cache_valid_time }}"
+        name:
+          - curl
+          - pass
+          - pass-extension-otp
+          - ripgrep
+
   roles:
-    - role: build_tools
+    - role: mtik00.build_tools
       tags: [build_tools]
-    - role: git
+
+    - role: mtik00.git
       tags: [git]
-    - role: dotfiles
+
+    - role: mtik00.dotfiles
       tags: [dotfiles]
-    - role: zsh
+
+    - role: mtik00.zsh
       tags: [zsh]
-    - role: home_bin
+
+    - role: mtik00.home_bin
       tags: [home_bin]
-    - role: home_folders
+
+    - role: mtik00.home_folders
       tags: [home_folders]
-    - role: pyenv
+
+    - role: mtik00.pyenv
       tags: [pyenv]
-    - role: gnupg
+
+    - role: mtik00.gnupg
       tags: [gnupg]
-    - role: pass
-      tags: [pass]
-    - role: docker
+
+    - role: mtik00.docker
       tags: [docker]
-    - role: tmux
+
+    - role: mtik00.tmux
       tags: [tmux]
-    - role: one_password
+
+    - role: mtik00.one_password
       tags: [one_password]
-    - role: ripgrep
-      tags: [ripgrep]
+
+    - role: mtik00.desk
+      tags: [desk]
