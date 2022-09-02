@@ -37,5 +37,8 @@ roles:
   - name: mtik00.one_password
     src: git+https://github.com/mtik00/ansible-role-onepassword-cli.git
 
+  - name: mtik00.lazygit
+    src: git+https://github.com/mtik00/ansible-role-lazygit.git
+
 collections:
   - name: community.general

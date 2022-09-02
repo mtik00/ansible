@@ -58,3 +58,6 @@
 
     - role: mtik00.desk
       tags: [desk]
+
+    - role: mtik00.lazygit
+      tags: [lazygit]
