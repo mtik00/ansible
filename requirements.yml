@@ -1,6 +1,10 @@
 ---
 
 roles:
+  - name: mtik00.wsl_resolv_conf
+    src: https://github.com/mtik00/ansible-role-wsl-resolv-conf.git
+    # version: 0.1.1
+
   - name: mtik00.build_tools
     src: git+https://github.com/mtik00/ansible-role-build-tools.git
 
