@@ -23,6 +23,9 @@
           - ripgrep
 
   roles:
+    - role: mtik00.wsl_resolv_conf
+      tags: [always]
+
     - role: mtik00.build_tools
       tags: [build_tools]
 
