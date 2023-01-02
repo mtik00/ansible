@@ -10,6 +10,7 @@
     apt_cache_valid_time: 600
     gnupg_default_cache_ttl: 28800  # 8 hours
     install_completions_oh_my_zsh: true
+    python_version: 3.10.9
   tasks:
     - name: Install common apt packages
       become: true
