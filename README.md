@@ -33,6 +33,13 @@ gpg --list-secret-keys --keyid-format=long
 
 The _short_ hex value is the one to use for the ansible-vault section below.
 
+NOTE: If you get any errors when committing changes before the process is complete,
+for example: `failed to write commit object`, run this command:
+
+```
+export GPG_TTY=$(tty)
+```
+
 ### Clone
 
 You'll need to set up the environment
