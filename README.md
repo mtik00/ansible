@@ -20,10 +20,18 @@ ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_ecdsa
 Add the public key to your GitHub account:  
 https://github.com/settings/keys
 
+### GPG Key
 List your installed GPG keys with:
 ```
 gpg --list-secret-keys --keyid-format=long
 ```
+
+- Download the private key (see 1Password for instructions)
+- Import the private key: `gpg --import ....private.asc`
+- [Add your GitHub email to your key](https://docs.github.com/en/authentication/managing-commit-signature-verification/associating-an-email-with-your-gpg-key)
+- List your keys again: `gpg --list-secret-keys --keyid-format=long`
+
+The _short_ hex value is the one to use for the ansible-vault section below.
 
 ### Clone
 
