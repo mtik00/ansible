@@ -14,13 +14,13 @@ You must configure your system if this is the first time you've run `ansible` on
 ### SSH Key
 ```shell
 mkdir --mode 700 -p ~/.ssh && \
-ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/gpx1
+ssh-keygen -t ecdsa -b 521 -N '' -f ~/.ssh/id_ecdsa
 ```
 
 Add the public key to your GitHub account:  
 https://github.com/settings/keys
 
-See your installed keys with:
+List your installed GPG keys with:
 ```
 gpg --list-secret-keys --keyid-format=long
 ```
