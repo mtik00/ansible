@@ -47,10 +47,10 @@
 
     - role: mtik00.home_folders
       tags: [home_folders]
-      vars:
-        additional_folders:
-          - name: gp
-            mode: '0770'
+      # vars:
+      #   additional_folders:
+      #     - name: gp
+      #       mode: '0770'
 
     - role: mtik00.pyenv
       tags: [pyenv]
@@ -67,23 +67,26 @@
     - role: mtik00.one_password
       tags: [one_password]
 
-    - role: mtik00.zscaler
-      tags: [zscaler]
+    - role: mtik00.poetry
+      tags: [poetry]
 
-    - role: zoom
-      tags: [zoom]
+    # - role: mtik00.zscaler
+    #   tags: [zscaler]
 
-    - role: vault
-      tags: [vault]
+    # - role: zoom
+    #   tags: [zoom]
 
-    - role: scaleft
-      tags: [scaleft]
+    # - role: vault
+    #   tags: [vault]
 
-    - role: mtik00.saml2aws
-      tags: [saml2aws]
+    # - role: scaleft
+    #   tags: [scaleft]
 
-    - role: insomnia
-      tags: [insomnia]
+    # - role: mtik00.saml2aws
+    #   tags: [saml2aws]
 
-    - role: aws_cli
-      tags: [aws_cli]
+    # - role: insomnia
+    #   tags: [insomnia]
+
+    # - role: aws_cli
+    #   tags: [aws_cli]
