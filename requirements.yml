@@ -44,5 +44,8 @@ roles:
   - name: mtik00.lazygit
     src: git+https://github.com/mtik00/ansible-role-lazygit.git
 
+  - name: mtik00.poetry
+    src: git+https://github.com/mtik00/ansible-role-poetry.git
+
 collections:
   - name: community.general
